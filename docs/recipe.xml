@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="recipe.xsl"?>
+<recipe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://www.zircote.com/recipe/recipe.xsd" author="Emeril Lagasse"
+    company="Television Food Network G.P" copyright="All Rights Reserved 2008" genre="Southwest"
+    year="2008" title="Lamb Chops with Minty Pepper Jelly Pan Sauce">
+    <componentGroups>
+        <componentGroup sequence="1" title="Ingredients">
+            <component sequence="1" name="loin T-bone lamb chops" quantity="8" unit="ea"/>
+            <component sequence="2" name="salt" quantity="3/4" unit="tsp"/>
+            <component sequence="3" name="black pepper" quantity="1/4" unit="tsp">freshly ground,
+                plus pinch for seasoning</component>
+            <component sequence="4" name="olive oil" quantity="2" unit="tbsp"/>
+            <component sequence="5" brand="Land O'Lakes" name="unsalted butter" quantity="3"
+                unit="tsp"/>
+            <component sequence="6" name="all purpose flour" quantity="1" unit="tbsp"/>
+            <component sequence="7" name="jalapeno peppers" quantity="2" unit="ea">stemmed, seeded and minced</component>
+            <component sequence="8" name="white wine" quantity="1/3" unit="cup"/>
+            <component sequence="9" name="chicken stock" quantity="3/4" unit="cup">chicken stock</component>
+            <component sequence="10" name="pepper jelly" quantity="1/2" unit="cup"/>
+            <component sequence="11" name="crushed red pepper" quantity="1/4" unit="tsp"/>
+            <component sequence="12" name="fresh mint leaves" quantity="3" unit="tbsp"
+            >chopped</component>
+        </componentGroup>
+    </componentGroups>
+    <procedures>
+        <procedure sequence="1">Heat a large skillet over medium-high heat and add the olive oil. </procedure>
+        <procedure sequence="2">When hot, add 1 tablespoon of the butter and add the chops.</procedure>
+        <procedure sequence="3">Cook about 4 minutes per side for medium-rare.</procedure>
+        <procedure sequence="4">Transfer to a platter and cover to keep warm while you make the pan
+            sauce. </procedure>
+        <procedure sequence="5">Add the flour and jalapenos to the drippings in the pan and cook,
+            stirring, until the flour is lightly browned, about 2 minutes. </procedure>
+        <procedure sequence="6">Add the white wine and cook until reduced and peppers are tender,
+            about 2 minutes. </procedure>
+        <procedure sequence="7">Add the chicken broth and cook until the sauce has thickened and
+            reduced slightly, stirring to loosen any browned bits on the pan bottom, about 3
+            minutes. </procedure>
+        <procedure sequence="8">Add the pepper jelly and crushed red pepper and stir to combine.</procedure>
+        <procedure sequence="9">Reduce the heat to low and cook until the jelly is melted and the
+            sauce is thick enough to coat the back of a spoon, about 3 minutes.</procedure>
+        <procedure sequence="10">Remove from the heat and stir in the mint and the remaining 2
+            tablespoons of butter. Season with remaining 1/4 teaspoon of salt and a pinch of pepper. </procedure>
+        <procedure sequence="11">Serve the sauce with the warm lamb chops, about 1/4 cup per person. </procedure>
+    </procedures>
+    <resources>
+        <resource type="url" name="Link" title="Lamb Chops with Minty Pepper Jelly Pan Sauce"
+            url="http://www.foodnetwork.com/recipes/emeril-lagasse/lamb-chops-with-minty-pepper-jelly-pan-sauce-recipe/index.html"/>
+        <resource type="img" name="Lamb Chops with Minty Pepper Jelly Pan Sauce"
+            title="Lamb Chops with Minty Pepper Jelly Pan Sauce"
+            url="http://img.foodnetwork.com/FOOD/2007/01/12/ee0926_dish1_med.jpg"/>
+    </resources>
+    <statistics>
+        <diffuculty>easy</diffuculty>
+        <service servings="4" servingSize="1/4" servingUnit="cup"/>
+        <times>
+            <time type="preperation">00:10:00</time>
+            <time type="standing">00:00:00</time>
+            <time type="cooking">00:20:00</time>
+        </times>
+    </statistics>
+</recipe>

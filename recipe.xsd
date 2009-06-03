@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    @author Robert Allen zircote@zircote.com
+    
+    @license
+    
+    Copyright [2008] [Robert Allen] 
+    
+    Licensed under the Apache License, Version 2.0 (the "License"); 
+    you may not use this file except in compliance with the License. 
+    
+    You may obtain a copy of the License at 
+    
+    http://www.apache.org/licenses/LICENSE-2.0 
+    
+    Unless required by applicable law or agreed to in writing, software 
+    distributed under the License is distributed on an "AS IS" BASIS, 
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+    See the License for the specific language governing permissions and 
+    limitations under the License.
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:complexType name="Recipe">
+        <xsd:all>
+            <xsd:element name="resources" type="Resources"/>
+            <xsd:element name="componentGroups" type="ComponentGroups"/>
+            <xsd:element name="procedures" type="Procedures"/>
+            <xsd:element name="statistics" type="Statistics"/>
+        </xsd:all>
+        <xsd:attributeGroup ref="BasicDetails"/>
+        <xsd:attributeGroup ref="RecipeDetails"/> 
+    </xsd:complexType>
+    <xsd:complexType name="Resources">
+        <xsd:sequence>
+            <xsd:element name="resource" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="Resource"/>
+    </xsd:complexType>
+    <xsd:complexType name="Statistics">
+        <xsd:all>
+            <xsd:element name="diffuculty" type="Diffuculty"/>
+            <xsd:element name="times" type="Time" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="service">
+                <xsd:complexType>
+                    <xsd:attributeGroup ref="Service"/>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:all>
+    </xsd:complexType>
+    <xsd:complexType name="Time">
+        <xsd:sequence>
+            <xsd:element name="time" maxOccurs="unbounded" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="TimeType"/>
+    </xsd:complexType>
+    <xsd:attributeGroup name="TimeType">
+        <xsd:attribute name="type" type="TimeType"/>
+    </xsd:attributeGroup>
+    <xsd:simpleType name="TimeType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="preperation"/>
+            <xsd:enumeration value="cooking"/>
+            <xsd:enumeration value="standing"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:attributeGroup name="Service">
+        <xsd:attribute name="servings" type="xsd:int"/>
+        <xsd:attribute name="servingSize" type="xsd:string"/>
+        <xsd:attribute name="servingUnit" type="Unit"/>
+    </xsd:attributeGroup>
+    <xsd:attributeGroup name="PreperationTime">
+        <xsd:attribute name="time" type="xsd:time"/>
+    </xsd:attributeGroup>
+    <xsd:complexType name="Procedures">
+        <xsd:sequence>
+            <xsd:element name="procedure" type="Procedure" minOccurs="1" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Procedure">
+        <xsd:annotation>
+            <xsd:documentation> Steps to be performed for the recipe. </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attributeGroup ref="Procedure">
+                    <xsd:annotation>
+                        <xsd:documentation> An individual step. </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attributeGroup>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:simpleType name="Unit">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="tsp">
+                <xsd:annotation>
+                    <xsd:documentation> Teaspoon </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="tbsp">
+                <xsd:annotation>
+                    <xsd:documentation> Tablespoon </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="pinch">
+                <xsd:annotation>
+                    <xsd:documentation>aprox. 1/8 teaspoon</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="dash">
+                <xsd:annotation>
+                    <xsd:documentation>dash aprox. 1/4 teaspoon</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="oz">
+                <xsd:annotation>
+                    <xsd:documentation>ounce</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="ea">
+                <xsd:annotation>
+                    <xsd:documentation>Each</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="fl-oz">
+                <xsd:annotation>
+                    <xsd:documentation>Fluid ounce</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="pkg">
+                <xsd:annotation>
+                    <xsd:documentation>package</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="cup">
+                <xsd:annotation>
+                    <xsd:documentation>cup</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="pt">
+                <xsd:annotation>
+                    <xsd:documentation>pint</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="qt">
+                <xsd:annotation>
+                    <xsd:documentation>quart</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="gal">
+                <xsd:annotation>
+                    <xsd:documentation>gallon 128 fl oz</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="lb">
+                <xsd:annotation>
+                    <xsd:documentation>english pound</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="firkin">
+                <xsd:annotation>
+                    <xsd:documentation>1152 fl oz; 9 gal</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="hogshead">
+                <xsd:annotation>
+                    <xsd:documentation>8064 fl oz.; 63 gal</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="peck">
+                <xsd:annotation>
+                    <xsd:documentation>2 gal</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="bushel">
+                <xsd:annotation>
+                    <xsd:documentation>8 gal</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="sm">
+                <xsd:annotation>
+                    <xsd:documentation>small</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="lg">
+                <xsd:annotation>
+                    <xsd:documentation>large</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="stick">
+                <xsd:annotation>
+                    <xsd:documentation>1/2 cup or 1/4 lb for butter</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="juice-of">
+                <xsd:annotation>
+                    <xsd:documentation>lemon: 3 tablespoons; orange: 1.2 cup </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="g">
+                <xsd:annotation>
+                    <xsd:documentation>gram</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="mg">
+                <xsd:annotation>
+                    <xsd:documentation>milligram</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="cg">
+                <xsd:annotation>
+                    <xsd:documentation>centigram</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="kg">
+                <xsd:annotation>
+                    <xsd:documentation>kilogram</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="l">
+                <xsd:annotation>
+                    <xsd:documentation>litre</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="ml">
+                <xsd:annotation>
+                    <xsd:documentation>millilitre</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="cl">
+                <xsd:annotation>
+                    <xsd:documentation>centilitre</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="ResourceType">
+        <xsd:union memberTypes="xsd:string">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="pdf">
+                        <xsd:annotation>
+                            <xsd:documentation>PDF</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:enumeration>
+                    <xsd:enumeration value="img">
+                        <xsd:annotation>
+                            <xsd:documentation>Image</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:enumeration>
+                    <xsd:enumeration value="url">
+                        <xsd:annotation>
+                            <xsd:documentation>Url</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:enumeration>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:union>
+    </xsd:simpleType>
+    <xsd:simpleType name="Url">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="http://(.)*"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="ComponentGroups">
+        <xsd:sequence>
+            <xsd:element name="componentGroup" type="ComponentGroup" minOccurs="1"
+                maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ComponentGroup">
+        <xsd:sequence>
+            <xsd:element name="component" type="Component" minOccurs="1" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="ComponentData"/>
+    </xsd:complexType>
+    <xsd:simpleType name="Diffuculty">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="easy"/>
+            <xsd:enumeration value="medium"/>
+            <xsd:enumeration value="difficult"/>
+            <xsd:enumeration value="proffesional"/>
+            <xsd:enumeration value="keep dreaming"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="Component">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attributeGroup ref="ComponentInfo"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:attributeGroup name="Procedure">
+        <xsd:attribute name="sequence" type="xsd:int"/>
+    </xsd:attributeGroup>
+    <xsd:attributeGroup name="ComponentData">
+        <xsd:attribute name="sequence" type="xsd:int"/>
+        <xsd:attribute name="title" type="xsd:string"/>
+    </xsd:attributeGroup>
+    <xsd:attributeGroup name="RecipeDetails">
+        <xsd:attribute name="author" type="xsd:string"/>
+        <xsd:attribute name="company" type="xsd:string"/>
+        <xsd:attribute name="year" type="xsd:gYear"/>
+        <xsd:attribute name="copyright" type="xsd:string"/>
+    </xsd:attributeGroup>
+    <xsd:attributeGroup name="BasicDetails">
+        <xsd:attribute name="title" type="xsd:string"/>
+        <xsd:attribute name="genre" type="xsd:string"/>
+    </xsd:attributeGroup>
+    <xsd:attributeGroup name="Resource">
+        <xsd:attribute name="type" type="ResourceType"/>
+        <xsd:attribute name="title" type="xsd:string"/>
+        <xsd:attribute name="name" type="xsd:string"/>
+        <xsd:attribute name="url" type="Url"/>
+    </xsd:attributeGroup>
+    <xsd:attributeGroup name="ComponentInfo">
+        <xsd:attribute name="sequence" type="xsd:int"/>
+        <xsd:attribute name="quantity" type="xsd:string"/>
+        <xsd:attribute name="unit" type="Unit"/>
+        <xsd:attribute name="brand" type="xsd:string"/>
+        <xsd:attribute name="name" type="xsd:string"/>
+    </xsd:attributeGroup>
+    <xsd:element name="recipe" type="Recipe"/>
+</xsd:schema>
